@@ -1,0 +1,55 @@
+<nav>
+  <div class="container pt-2 pb-5">
+    <!-- Logout Button -->
+    <button class="btn btn-secondary mb-4" (click)="logout()" style="float: right; width: 10%;">Logout</button>
+  </div>  
+</nav>
+
+<div class="container">
+  <h1>Welcome, {{ username }}</h1>
+</div>
+
+<!-- Display table only if personalDetails exist -->
+<div class="container mt-4" *ngIf="personalDetails && personalDetails.length > 0">
+  <h2 class="mb-4">Personal Details</h2>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Username</th>
+        <th>Hobby</th>
+        <th>Occupation</th>
+        <th>Places Visited</th>
+        <th>Favorite Artist</th>
+        <th>Musician</th>
+        <th>Date of Birth</th>
+        <th>File</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let detail of personalDetails">
+        <td>{{ detail.username }}</td>
+        <td>{{ detail.hobby }}</td>
+        <td>{{ detail.occupation }}</td>
+        <td>{{ detail.placesVisited }}</td>
+        <td>{{ detail.favoriteArtist }}</td>
+        <td>{{ detail.musician }}</td>
+        <td>{{ detail.dob | date: 'MM/dd/yyyy' }}</td>
+        <td>
+          <a *ngIf="detail.file" [href]="'/uploads/' + detail.file" target="_blank">Download</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Display message if no personal details are found -->
+<div class="container mt-4" *ngIf="!personalDetails || personalDetails.length === 0">
+  <div class="alert alert-warning" role="alert">
+    No personal details available.
+  </div>
+</div>
+
+<!-- Back to Dashboard link -->
+<div class="container">
+  <a routerLink="/dashboard" class="btn btn-link text-info" style="margin-left: 50%;">Back to Dashboard</a>
+</div>

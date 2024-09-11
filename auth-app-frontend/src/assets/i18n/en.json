@@ -1,0 +1,10 @@
+{
+  "LOGIN": {
+    "TITLE": "Login",
+    "SUBTITLE": "Please enter your login details",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "BUTTON_TEXT": "Login",
+    "SIGNUP_LINK": "Don't have an account? Signup"
+  }
+}

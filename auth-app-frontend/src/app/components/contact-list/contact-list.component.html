@@ -1,0 +1,85 @@
+<nav>
+  <div class="container pt-2 pb-5">
+    <!-- Logout Button -->
+    <button class="btn btn-secondary mb-4" (click)="logout()" style="float: right; width: 10%;">Logout</button>
+  </div>  
+</nav>
+<div class="container">
+
+  <h2 class="mt-3">Contact List</h2>
+  <table class="table">
+    
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Contact Number</th>
+        <th>Address</th>
+        <th>Address 2</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contact of contacts; let i = index">
+        <td>{{ contact.id }}</td>
+        <td>{{ contact.username }}</td>
+        <td>{{ contact.contactNumber }}</td>
+        <td>{{ contact.address }}</td>
+        <td>{{ contact.address2 }}</td>
+        <td>{{ contact.city }}</td>
+        <td>{{ contact.state }}</td>
+        <td>{{ contact.zip }}</td>
+        <td>
+          <button (click)="editContact(i)" class="btn btn-primary m-2">Edit</button>
+          <button (click)="deleteContact(i)" class="btn btn-danger m-2">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a routerLink="/dashboard" class="text-info text-end">Go Back to Dashboard</a>
+
+  <!-- Only show the form when editing a contact -->
+  <div *ngIf="isEditing">
+    <!-- Contact Form to Edit Contact -->
+    <form (ngSubmit)="onSubmit()">
+      <h1>Edit Contact</h1>
+      <div class="form-group mt-2">
+        <label for="contactNumber">Contact Number</label>
+        <input type="text" id="contactNumber" [(ngModel)]="contactForm.contactNumber" name="contactNumber" class="form-control" required />
+      </div>
+
+      <div class="form-group mt-2">
+        <label for="address">Address</label>
+        <input type="text" id="address" [(ngModel)]="contactForm.address" name="address" class="form-control" required />
+      </div>
+
+      <div class="form-group mt-2">
+        <label for="address2">Address 2</label>
+        <input type="text" id="address2" [(ngModel)]="contactForm.address2" name="address2" class="form-control" />
+      </div>
+
+      <div class="form-group mt-2">
+        <label for="city">City</label>
+        <input type="text" id="city" [(ngModel)]="contactForm.city" name="city" class="form-control" required />
+      </div>
+
+      <div class="form-group mt-2">
+        <label for="state">State</label>
+        <input type="text" id="state" [(ngModel)]="contactForm.state" name="state" class="form-control" required />
+      </div>
+
+      <div class="form-group mt-2">
+        <label for="zip">Zip</label>
+        <input type="text" id="zip" [(ngModel)]="contactForm.zip" name="zip" class="form-control" required />
+      </div>
+
+      <button type="submit" class="btn btn-success">Update Contact</button>
+      <button type="button" class="btn btn-secondary m-3" (click)="resetForm()">Cancel</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+form{
+    width: 70%;
+    margin-top: 50px;
+}
+a{
+ margin: 10%;
+}
+
+/* Add margin and padding to the file input */
+.custom-file-input {
+    margin: 10px 0; /* Adjust the values as needed (top/bottom, left/right) */
+    padding: 8px;
+    width: 100%; /* Optional, to make it responsive */
+  }
+  

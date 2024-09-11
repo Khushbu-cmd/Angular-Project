@@ -1,0 +1,10 @@
+{
+  "LOGIN": {
+    "TITLE": "Connexion",
+    "SUBTITLE": "Veuillez entrer vos identifiants de connexion",
+    "USERNAME": "Nom d'utilisateur",
+    "PASSWORD": "Mot de passe",
+    "BUTTON_TEXT": "Se connecter",
+    "SIGNUP_LINK": "Vous n'avez pas de compte? Inscription"
+  }
+}

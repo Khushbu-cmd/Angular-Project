@@ -1,0 +1,34 @@
+<nav class="text-end">
+<button (click)="switchLanguage('en')" class="m-2 bg-white text-decoration-underline" style="border: none;">English</button>
+    <button (click)="switchLanguage('fr')" class="m-2 bg-white text-decoration-underline" style="border: none;">Français</button>
+</nav>   
+<div class="container vh-100 d-flex justify-content-center align-items-center" style="width: 80%;">
+  <div class="card shadow w-50">
+    <div class="card-body px-2">
+      <div class="text-center mb-4">
+        <fa-icon [icon]="faLock" class="fa-3x" style="height: 100px;"></fa-icon>
+      </div>
+
+      <h2 class="text-center">{{ 'LOGIN.TITLE' | translate }}</h2>
+      <p class="text-center text-muted">{{ 'LOGIN.SUBTITLE' | translate }}</p>
+
+      <form (submit)="onSubmit()" class="row">
+        <div class="mb-3 col-md-8 offset-md-2">
+          <label for="username" class="form-label">{{ 'LOGIN.USERNAME' | translate }}</label>
+          <input type="text" id="username" [(ngModel)]="username" name="username" class="form-control" required>
+        </div>
+        <div class="mb-3 col-md-8 offset-md-2">
+          <label for="password" class="form-label">{{ 'LOGIN.PASSWORD' | translate }}</label>
+          <input type="password" id="password" [(ngModel)]="password" name="password" class="form-control" required>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary w-50" [@rotateIn]>{{ 'LOGIN.BUTTON_TEXT' | translate }}</button>
+        </div>
+      </form>
+
+      <div class="text-center mt-3">
+        <a routerLink="/signup" class="d-block">{{ 'LOGIN.SIGNUP_LINK' | translate }}</a>
+      </div>
+    </div>
+  </div>
+</div>

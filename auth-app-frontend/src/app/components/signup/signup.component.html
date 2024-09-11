@@ -1,0 +1,22 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-lg p-4 w-45">
+    <div class="text-center mb-4">
+      <h2>Signup</h2>
+      <p class="text-muted">Create your account</p>
+    </div>
+    <form (submit)="onSubmit()" [@fadeIn]>
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" id="username" [(ngModel)]="userData.username" name="username" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" [(ngModel)]="userData.password" name="password" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Signup</button>
+    </form>
+    <div class="text-center mt-3">
+      <a routerLink="/login" class="d-block">Already have an account? Login</a>
+    </div>
+  </div>
+</div>

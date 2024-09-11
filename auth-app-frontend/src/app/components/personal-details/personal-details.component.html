@@ -1,0 +1,68 @@
+<nav>
+  <div class="container pt-2 pb-5">
+    <!-- Logout Button -->
+    <button class="btn btn-secondary mb-4" (click)="logout()" style="float: right; width: 10%;">Logout</button>
+  </div>  
+</nav>
+
+<form [formGroup]="personalForm" (ngSubmit)="onSubmit()" class="container mt-4">
+  <h1> Personal  Detail</h1>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="hobby-addon">🏆</span>
+    </div>
+    <input type="text" id="hobby" formControlName="hobby" class="form-control" placeholder="Hobby" aria-label="Hobby" aria-describedby="hobby-addon" />
+  </div>
+  
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="occupation-addon">💼</span>
+    </div>
+    <input type="text" id="occupation" formControlName="occupation" class="form-control" placeholder="Occupation" aria-label="Occupation" aria-describedby="occupation-addon" />
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="placesVisited-addon">🌍</span>
+    </div>
+    <input type="text" id="placesVisited" formControlName="placesVisited" class="form-control" placeholder="Places Visited" aria-label="Places Visited" aria-describedby="placesVisited-addon" />
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="favoriteArtist-addon">🎨</span>
+    </div>
+    <input type="text" id="favoriteArtist" formControlName="favoriteArtist" class="form-control" placeholder="Favorite Artist" aria-label="Favorite Artist" aria-describedby="favoriteArtist-addon" />
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="musician-addon">🎵</span>
+    </div>
+    <input type="text" id="musician" formControlName="musician" class="form-control" placeholder="Musician" aria-label="Musician" aria-describedby="musician-addon" />
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="dob-addon">🎂</span>
+    </div>
+    <input type="date" id="dob" formControlName="dob" class="form-control" placeholder="Date of Birth" aria-label="Date of Birth" aria-describedby="dob-addon">
+  </div>
+
+  <div class="input-group mr-3 mb-3"> <!-- Added mb-3 for spacing -->
+    <div class="input-group-prepend">
+      <span class="input-group-text m-2">📁</span>
+    </div>
+    <input type="file" id="file" (change)="onFileChange($event)" class="form-control-file mt-2" />
+  </div>
+ 
+  <div class="mt-2">
+    <button type="submit" class="btn btn-primary mt-4" [disabled]="!personalForm.valid">Submit</button>
+    <a routerLink="/dashboard" class="text-info text-end">Go Back to Dashboard</a>
+  </div>
+</form>
+
+<div *ngIf="serverResponse" class="container mt-4">
+ 
+  <pre class="bg-light p-3 border rounded">{{ serverResponse | json }}</pre>
+</div>

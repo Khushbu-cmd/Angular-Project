@@ -1,0 +1,96 @@
+<nav>
+  <div class="container pt-2 pb-5">
+    <!-- Logout Button -->
+    <button class="btn btn-secondary mb-4" (click)="logout()" style="float: right; width: 10%;">Logout</button>
+  </div>  
+</nav>
+<div class="container pt-2 pb-5">
+  <h2 class="text-center">Contact Form</h2>
+  
+  <!-- Contact Form -->
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="row" style="max-width: 800px; margin: auto;">
+    <div class="form-group col-md-12">
+      <label for="contactNumber" class="form-label">Contact Number:</label>
+      <input id="contactNumber" formControlName="contactNumber" type="text" class="form-control" placeholder="123-456-7890" />
+      <div *ngIf="contactForm.get('contactNumber')?.invalid && contactForm.get('contactNumber')?.touched" class="text-danger">
+        Contact Number is required.
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <label for="address" class="form-label mt-2">Address:</label>
+      <input id="address" formControlName="address" type="text" class="form-control" placeholder="1234 Main St" />
+      <div *ngIf="contactForm.get('address')?.invalid && contactForm.get('address')?.touched" class="text-danger">
+        Address is required.
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <label for="address2" class="form-label mt-2">Address Line 2:</label>
+      <input id="address2" formControlName="address2" type="text" class="form-control" placeholder="Apartment, studio, or floor" />
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="city" class="form-label mt-2">City:</label>
+      <input id="city" formControlName="city" type="text" class="form-control" placeholder="City" />
+      <div *ngIf="contactForm.get('city')?.invalid && contactForm.get('city')?.touched" class="text-danger">
+        City is required.
+      </div>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="state" class="form-label mt-2">State:</label>
+      <select id="state" formControlName="state" class="form-control">
+        <option value="" disabled selected>Select your state</option>
+        <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+      </select>
+      <div *ngIf="contactForm.get('state')?.invalid && contactForm.get('state')?.touched" class="text-danger">
+        State is required.
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="zip" class="form-label mt-2">Zip Code:</label>
+      <input id="zip" formControlName="zip" type="text" class="form-control" placeholder="Zip Code" />
+      <div *ngIf="contactForm.get('zip')?.invalid && contactForm.get('zip')?.touched" class="text-danger">
+        Zip Code is required.
+      </div>
+    </div>
+
+    <div class="m-5">
+      <button type="submit" class="btn btn-primary m-3" style="width: 25%;">{{ isEditing ? 'Update' : 'Submit' }}</button>
+      <a routerLink="/dashboard" class="text-info text-end">Go Back to Dashboard</a>
+    </div>
+  </form>
+  
+  <!-- Contacts List -->
+  <div class="mt-5">
+    <h3 class="mb-4">Contacts List</h3>
+    <table class="table table-bordered mt-3">
+      <thead>
+        <tr>
+          <th>Actions</th>
+          <th>ID</th>
+          <th>Contact Number</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Zip</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of contacts; let i = index">
+          <td>
+            <button class="btn btn-warning" (click)="editContact(i)" style="width: 35%;">Edit</button>
+            <button class="btn btn-danger" (click)="deleteContact(i)" style="width: 35%;">Delete</button>
+          </td>
+          <td>{{ contact.id }}</td>
+          <td>{{ contact.contactNumber }}</td>
+          <td>{{ contact.address }} {{ contact.address2 }}</td>
+          <td>{{ contact.city }}</td>
+          <td>{{ contact.state }}</td>
+          <td>{{ contact.zip }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
